@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bodega Santos - Añadir Producto</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/añadir.css" />
+  </head>
+
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo">
+          <span>Bodega Santos</span>
+        </div>
+
+        <nav class="menu">
+          <a href="index.html"
+            ><i data-lucide="layout-dashboard"></i> Dashboard</a
+          >
+          <a href="inventario.html"><i data-lucide="boxes"></i> Inventario</a>
+          <a class="active" href="añadir.html"
+            ><i data-lucide="plus-circle"></i> Añadir</a
+          >
+          <a href="consumir.html"
+            ><i data-lucide="minus-circle"></i> Consumir</a
+          >
+          <a href="configuracion.html"
+            ><i data-lucide="settings"></i> Configuración</a
+          >
+        </nav>
+      </aside>
+
+      <main class="content fade-in">
+        <h1>Gestión de Repuestos</h1>
+
+        <!-- TABS -->
+        <div class="tabs">
+          <button class="tab active" data-tab="agregar">Agregar</button>
+          <button class="tab" data-tab="editar">Editar</button>
+        </div>
+
+        <!-- AGREGAR -->
+        <div class="tab-content active" id="agregar">
+          <div class="form-container">
+            <form id="formAgregar">
+              <div class="input-group">
+                <label>Documento de Ingreso</label>
+                <select id="documento" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="Factura">Factura</option>
+                  <option value="Boleta">Boleta</option>
+                  <option value="Sin Documento">Sin Documento</option>
+                </select>
+              </div>
+
+              <div class="input-group" id="grupoNumeroDocumento">
+                <label>Número de Documento</label>
+                <input type="text" id="numeroDocumento" />
+              </div>
+
+              <div class="input-group">
+                <label>Código</label>
+                <input type="text" id="codigo" required />
+              </div>
+
+              <div class="input-group">
+                <label>Nombre</label>
+                <input type="text" id="nombre" required />
+              </div>
+
+              <div class="input-group">
+                <label>Stock Inicial</label>
+                <input type="number" id="stock" required min="0" />
+              </div>
+
+              <div class="input-group">
+                <label>Fecha de Ingreso</label>
+                <input type="date" id="fechaIngreso" required />
+              </div>
+
+              <button type="submit" class="btn-primary">
+                Guardar Producto
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- EDITAR -->
+        <div class="tab-content" id="editar">
+          <div class="form-container">
+            <div class="input-group">
+              <label>Buscar por Código</label>
+              <input type="text" id="buscarCodigo" placeholder="Ej: 803615" />
+            </div>
+
+            <div class="input-group">
+              <label>Código</label>
+              <input type="text" id="codigoEditar" disabled />
+            </div>
+
+            <div class="input-group">
+              <label>Nombre Actual</label>
+              <input type="text" id="nombreActual" disabled />
+            </div>
+
+            <div class="input-group">
+              <label>Nuevo Nombre</label>
+              <input type="text" id="nuevoNombre" />
+            </div>
+
+            <button id="btnEditar" class="btn-primary">Guardar Cambios</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/store.js"></script>
+    <script src="js/añadir.js"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

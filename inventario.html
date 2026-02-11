@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bodega Santos - Inventario</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/inventario.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+      <div class="logo">
+          <span>Bodega Santos</span>
+      </div>
+
+      <nav class="menu">
+          <a href="index.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+          <a class="active" href="inventario.html"><i data-lucide="boxes"></i> Inventario</a>
+          <a href="añadir.html"><i data-lucide="plus-circle"></i> Añadir</a>
+          <a href="consumir.html"><i data-lucide="minus-circle"></i> Consumir</a>
+          <a href="configuracion.html"><i data-lucide="settings"></i> Configuración</a>
+      </nav>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content fade-in">
+
+      <h1>Inventario General</h1>
+
+      <div class="top-bar">
+          <input type="text" id="buscador" placeholder="Buscar producto...">
+      </div>
+
+      <div class="table-container">
+          <table>
+              <thead>
+                  <tr>
+                      <th>Código</th>
+                      <th>Nombre</th>
+                      <th>Documento</th>
+                      <th>Stock</th>
+                  </tr>
+              </thead>
+              <tbody id="tablaInventario"></tbody>
+          </table>
+      </div>
+
+  </main>
+
+</div>
+
+<script src="js/store.js"></script>
+<script src="js/inventario.js"></script>
+<script>
+lucide.createIcons();
+</script>
+
+</body>
+</html>
