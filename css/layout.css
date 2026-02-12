@@ -2,19 +2,52 @@
    BOTÓN HAMBURGUESA
 =========================*/
 
-.menu-toggle {
+.menu-open{
+    display:none; /* 👈 OCULTO POR DEFECTO */
+    position:fixed;
+    top:15px;
+    left:15px;
+    width:42px;
+    height:42px;
+    background:#2563eb;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    z-index:2000;
+    justify-content:center;
+    align-items:center;
+}
+
+.menu-open i{
+    color:white;
+    font-size:18px;
+}
+
+
+/* Ocultar botón abrir cuando sidebar está activo */
+.sidebar.active ~ .menu-open {
   display: none;
-  position: fixed;
+}
+
+/* BOTÓN CERRAR */
+.menu-close {
+  display: none;
+  position: absolute;
   top: 15px;
-  left: 15px;
-  font-size: 24px;
+  right: 15px;
+  width: 36px;
+  height: 36px;
   background: #2563eb;
-  color: white;
   border: none;
-  padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
-  z-index: 1100;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-close i {
+  color: white;
+  font-size: 16px;
 }
 
 /* =========================
@@ -47,6 +80,14 @@
   flex-direction: column;
   justify-content: space-between;
   position: fixed;
+  top: 0;
+  left: 0;
+  transition: 0.3s ease;
+  z-index: 1500;
+}
+
+.sidebar.active {
+  left: 0;
 }
 
 .logo {
@@ -109,6 +150,33 @@
    MOBILE
 =========================*/
 @media (max-width: 768px) {
+  .menu-open {
+    display: flex;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -240px;
+    top: 0;
+    width: 240px;
+    height: 100vh;
+    transition: 0.3s ease;
+    z-index: 1500;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .sidebar.active .menu-close {
+    display: flex;
+  }
+
+  /* CENTRAR TÍTULO */
+  h1 {
+    text-align: center;
+  }
+
   .menu-toggle {
     display: block;
   }

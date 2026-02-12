@@ -82,10 +82,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     productos.push(nuevoProducto);
     setProductos(productos);
+    actualizarResumen();
 
     alert("Producto agregado correctamente");
 
     form.reset();
+    actualizarPreview();
     grupoNumero.style.display = "none";
   });
 
@@ -150,3 +152,97 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+/* =========================
+   VISTA PREVIA DINÁMICA
+=========================*/
+
+const inputCodigo = document.getElementById("codigo");
+const inputNombre = document.getElementById("nombre");
+const inputStock = document.getElementById("stock");
+const inputDocumento = document.getElementById("documento");
+const inputNumeroDoc = document.getElementById("numeroDocumento");
+const inputFecha = document.getElementById("fechaIngreso");
+
+// Elementos preview
+const pvCodigo = document.getElementById("pvCodigo");
+const pvNombre = document.getElementById("pvNombre");
+const pvStock = document.getElementById("pvStock");
+const pvDoc = document.getElementById("pvDoc");
+const pvFecha = document.getElementById("pvFecha");
+
+function actualizarPreview(){
+
+  // Código
+  pvCodigo.textContent = inputCodigo.value || "—";
+
+  // Nombre
+  pvNombre.textContent = inputNombre.value || "—";
+
+  // Stock
+  pvStock.textContent = inputStock.value || "—";
+
+  // Documento
+  let tipo = inputDocumento.value;
+  let numero = inputNumeroDoc.value.trim();
+
+  let docTexto = "—";
+
+  if(tipo === "Factura"){
+    docTexto = numero ? `F - ${numero}` : "F - (sin número)";
+  }
+  else if(tipo === "Boleta"){
+    docTexto = numero ? `B - ${numero}` : "B - (sin número)";
+  }
+  else if(tipo === "Sin Documento"){
+    docTexto = "S.D";
+  }
+
+  pvDoc.textContent = docTexto;
+
+  // Fecha
+  if(inputFecha.value){
+    const fecha = new Date(inputFecha.value);
+    pvFecha.textContent = fecha.toLocaleDateString("es-PE");
+  }else{
+    pvFecha.textContent = "—";
+  }
+
+}
+
+// Escuchar cambios
+[inputCodigo, inputNombre, inputStock, inputDocumento, inputNumeroDoc, inputFecha]
+.forEach(input => {
+  input.addEventListener("input", actualizarPreview);
+});
+
+/* =========================
+   RESUMEN DINÁMICO
+=========================*/
+
+const rsTotal = document.getElementById("rsTotal");
+const rsStockTotal = document.getElementById("rsStockTotal");
+const rsBajo = document.getElementById("rsBajo");
+
+function actualizarResumen(){
+
+  const productos = getProductos();
+
+  // Total productos
+  rsTotal.textContent = productos.length;
+
+  // Stock total
+  const totalStock = productos.reduce((acc, p) => {
+    return acc + Number(p.stock || 0);
+  }, 0);
+
+  rsStockTotal.textContent = totalStock;
+
+  // Stock bajo (<=5)
+  const bajo = productos.filter(p => Number(p.stock) <= 5).length;
+  rsBajo.textContent = bajo;
+
+}
+
+// Ejecutar al cargar página
+actualizarResumen();

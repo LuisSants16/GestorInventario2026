@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   /* =========================
      ICONOS LUCIDE
   ==========================*/
@@ -8,26 +7,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================
-     TOGGLE TEMA
-  ==========================*/
+   TOGGLE MODO CLARO GLOBAL
+=========================*/
+
   const toggle = document.getElementById("toggleTheme");
-  const themeText = document.getElementById("themeText");
+
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "light") {
+    document.body.classList.add("light");
+    if (toggle) toggle.checked = true;
+  }
 
   if (toggle) {
-    const savedTheme = localStorage.getItem("theme") || "dark";
-
-    if (savedTheme === "light") {
-      document.body.classList.add("light");
-      toggle.checked = true;
-      if (themeText) themeText.textContent = "Modo Claro";
-    }
-
     toggle.addEventListener("change", () => {
-      document.body.classList.toggle("light");
-      const isLight = document.body.classList.contains("light");
-      localStorage.setItem("theme", isLight ? "light" : "dark");
-      if (themeText) {
-        themeText.textContent = isLight ? "Modo Claro" : "Modo Oscuro";
+      if (toggle.checked) {
+        document.body.classList.add("light");
+        localStorage.setItem("theme", "light");
+      } else {
+        document.body.classList.remove("light");
+        localStorage.setItem("theme", "dark");
       }
     });
   }
@@ -38,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalElement = document.getElementById("totalProductos");
 
   if (totalElement) {
-
     const productos = getProductos();
     const movimientos = getMovimientos();
 
@@ -46,13 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
     totalElement.textContent = productos.length;
 
     // Stock bajo
-    const bajo = productos.filter(p => Number(p.stock) <= 5).length;
+    const bajo = productos.filter((p) => Number(p.stock) <= 5).length;
     document.getElementById("stockBajo").textContent = bajo;
 
     // Movimientos hoy
     const hoy = new Date().toDateString();
-    const movHoy = movimientos.filter(m =>
-      new Date(m.fecha).toDateString() === hoy
+    const movHoy = movimientos.filter(
+      (m) => new Date(m.fecha).toDateString() === hoy,
     ).length;
 
     document.getElementById("movimientosHoy").textContent = movHoy;
@@ -66,8 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
           number: { value: 30 },
           size: { value: 3 },
           move: { speed: 0.6 },
-          line_linked: { enable: true }
-        }
+          line_linked: { enable: true },
+        },
       });
     }
 
@@ -77,51 +75,71 @@ document.addEventListener("DOMContentLoaded", () => {
     const ctx = document.getElementById("stockChart");
 
     if (ctx && window.Chart) {
-
-      const labels = productos.map(p => p.nombre || p.codigo);
-      const data = productos.map(p => Number(p.stock) || 0);
+      const labels = productos.map((p) => p.nombre || p.codigo);
+      const data = productos.map((p) => Number(p.stock) || 0);
 
       new Chart(ctx, {
         type: "bar",
         data: {
           labels,
-          datasets: [{
-            label: "Stock Actual",
-            data,
-            backgroundColor: "#2563eb"
-          }]
+          datasets: [
+            {
+              label: "Stock Actual",
+              data,
+              backgroundColor: "#2563eb",
+            },
+          ],
         },
         options: {
           responsive: true,
           plugins: {
-            legend: { display: false }
-          }
-        }
+            legend: { display: false },
+          },
+        },
       });
     }
-
   }
-
 });
 
 /* =========================
-   SIDEBAR RESPONSIVE
+   SIDEBAR MOBILE LIMPIO
 =========================*/
 
-const menuToggle = document.getElementById("menuToggle");
+const menuOpen = document.getElementById("menuOpen");
+const menuClose = document.getElementById("menuClose");
 const sidebar = document.querySelector(".sidebar");
 const overlay = document.getElementById("overlay");
 
-if(menuToggle){
-  menuToggle.addEventListener("click", () => {
-    sidebar.classList.toggle("active");
-    overlay.classList.toggle("active");
-  });
+// Solo aplicar lógica si es pantalla móvil
+function esMobile() {
+  return window.innerWidth <= 768;
 }
 
-if(overlay){
-  overlay.addEventListener("click", () => {
+menuOpen.addEventListener("click", () => {
+  if (!esMobile()) return;
+
+  sidebar.classList.add("active");
+  overlay.classList.add("active");
+  menuOpen.style.display = "none";
+});
+
+menuClose.addEventListener("click", () => {
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+  menuOpen.style.display = "flex";
+});
+
+overlay.addEventListener("click", () => {
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+  menuOpen.style.display = "flex";
+});
+
+// Si cambia el tamaño de pantalla, limpiar estado
+window.addEventListener("resize", () => {
+  if (!esMobile()) {
     sidebar.classList.remove("active");
     overlay.classList.remove("active");
-  });
-}
+    menuOpen.style.display = "none";
+  }
+});

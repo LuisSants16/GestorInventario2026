@@ -10,3 +10,49 @@ body {
     min-height: 100vh;
     color: white;
 }
+
+/* =========================
+   MODO CLARO GLOBAL
+=========================*/
+
+body.light {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+body.light .sidebar {
+    background: #ffffff;
+}
+
+body.light .sidebar a {
+    color: #1e293b;
+}
+
+body.light .content {
+    background: #f1f5f9;
+}
+
+body.light .card,
+body.light .form-container,
+body.light .table-container,
+body.light .chart-box {
+    background: #ffffff;
+    color: #1e293b;
+}
+
+body.light table {
+    background: #ffffff;
+}
+
+body.light th {
+    color: #1e293b;
+}
+
+body.light td {
+    color: #334155;
+}
+
+body.light .menu-open,
+body.light .menu-close {
+    background: #1e293b;
+}

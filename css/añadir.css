@@ -1,3 +1,91 @@
+
+/* =========================
+   LAYOUT PROFESIONAL AÑADIR
+=========================*/
+
+.add-grid{
+    display:grid;
+    grid-template-columns: 450px 1fr;
+    gap:30px;
+    align-items:start;
+    margin-top:20px;
+}
+
+.panel{
+    width:100%;
+}
+
+.side-panel{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+/* TARJETAS DERECHA */
+.card-box{
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:15px;
+}
+
+/* TITULOS DE TARJETA */
+.card-title{
+    font-size:16px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+/* PREVIEW */
+.preview{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.preview-row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 12px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.04);
+    font-size:13px;
+}
+
+.preview-row .k{
+    opacity:0.8;
+}
+
+.preview-row .v{
+    font-weight:700;
+}
+
+/* RESUMEN */
+.mini-stats{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.mini-stat{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 12px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.04);
+    font-size:14px;
+}
+
+.mini-v{
+    font-weight:700;
+}
+
+.page-title{
+    text-align:center;
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
 .form-container{
     background:rgba(255,255,255,0.05);
     padding:20px;
@@ -89,6 +177,39 @@ select{
     border-radius:8px;
     border:none;
     outline:none;
+}
+
+.recent-item{
+  padding:12px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.04);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.ri-top{
+  display:flex;
+  justify-content:space-between;
+  font-weight:700;
+  font-size:13px;
+}
+
+.ri-nombre{
+  font-size:13px;
+  opacity:0.9;
+}
+
+.ri-doc{
+  font-size:12px;
+  opacity:0.7;
+}
+
+/* RESPONSIVE GRID */
+@media (max-width:1024px){
+    .add-grid{
+        grid-template-columns:1fr;
+    }
 }
 
 @media (max-width: 768px){

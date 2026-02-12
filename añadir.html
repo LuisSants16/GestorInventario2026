@@ -11,121 +11,221 @@
     />
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/añadir.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/añadir.css" />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
+    <button class="menu-open" id="menuOpen">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="overlay" id="overlay"></div>
+
     <div class="layout">
       <aside class="sidebar">
+        <button class="menu-close" id="menuClose">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
         <div class="logo">
           <span>Bodega Santos</span>
         </div>
 
         <nav class="menu">
-          <a href="index.html"
+          <a href="./index.html"
             ><i data-lucide="layout-dashboard"></i> Dashboard</a
           >
-          <a href="inventario.html"><i data-lucide="boxes"></i> Inventario</a>
-          <a class="active" href="añadir.html"
+          <a href="./inventario.html"><i data-lucide="boxes"></i> Inventario</a>
+          <a class="active" href="./añadir.html"
             ><i data-lucide="plus-circle"></i> Añadir</a
           >
-          <a href="consumir.html"
+          <a href="./consumir.html"
             ><i data-lucide="minus-circle"></i> Consumir</a
           >
-          <a href="configuracion.html"
+          <a href="./configuracion.html"
             ><i data-lucide="settings"></i> Configuración</a
           >
         </nav>
+
+        <div class="theme">
+          <span>Modo Claro</span>
+          <label class="switch">
+            <input type="checkbox" id="toggleTheme" />
+            <span class="slider"></span>
+          </label>
+        </div>
       </aside>
 
       <main class="content fade-in">
-        <h1>Gestión de Repuestos</h1>
+        <h1 class="page-title">Gestión de Repuestos</h1>
 
-        <!-- TABS -->
-        <div class="tabs">
-          <button class="tab active" data-tab="agregar">Agregar</button>
-          <button class="tab" data-tab="editar">Editar</button>
-        </div>
-
-        <!-- AGREGAR -->
-        <div class="tab-content active" id="agregar">
-          <div class="form-container">
-            <form id="formAgregar">
-              <div class="input-group">
-                <label>Documento de Ingreso</label>
-                <select id="documento" required>
-                  <option value="">Seleccionar...</option>
-                  <option value="Factura">Factura</option>
-                  <option value="Boleta">Boleta</option>
-                  <option value="Sin Documento">Sin Documento</option>
-                </select>
-              </div>
-
-              <div class="input-group" id="grupoNumeroDocumento">
-                <label>Número de Documento</label>
-                <input type="text" id="numeroDocumento" />
-              </div>
-
-              <div class="input-group">
-                <label>Código</label>
-                <input type="text" id="codigo" required />
-              </div>
-
-              <div class="input-group">
-                <label>Nombre</label>
-                <input type="text" id="nombre" required />
-              </div>
-
-              <div class="input-group">
-                <label>Stock Inicial</label>
-                <input type="number" id="stock" required min="0" />
-              </div>
-
-              <div class="input-group">
-                <label>Fecha de Ingreso</label>
-                <input type="date" id="fechaIngreso" required />
-              </div>
-
-              <button type="submit" class="btn-primary">
-                Guardar Producto
-              </button>
-            </form>
-          </div>
-        </div>
-
-        <!-- EDITAR -->
-        <div class="tab-content" id="editar">
-          <div class="form-container">
-            <div class="input-group">
-              <label>Buscar por Código</label>
-              <input type="text" id="buscarCodigo" placeholder="Ej: 803615" />
+        <div class="add-grid">
+          <!-- COLUMNA IZQUIERDA -->
+          <section class="panel">
+            <!-- TABS -->
+            <div class="tabs">
+              <button class="tab active" data-tab="agregar">Agregar</button>
+              <button class="tab" data-tab="editar">Editar</button>
             </div>
 
-            <div class="input-group">
-              <label>Código</label>
-              <input type="text" id="codigoEditar" disabled />
+            <!-- AGREGAR -->
+            <div class="tab-content active" id="agregar">
+              <div class="form-container">
+                <form id="formAgregar">
+                  <div class="input-group">
+                    <label>Documento de Ingreso</label>
+                    <select id="documento" required>
+                      <option value="">Seleccionar...</option>
+                      <option value="Factura">Factura</option>
+                      <option value="Boleta">Boleta</option>
+                      <option value="Sin Documento">Sin Documento</option>
+                    </select>
+                  </div>
+
+                  <div class="input-group" id="grupoNumeroDocumento">
+                    <label>Número de Documento</label>
+                    <input type="text" id="numeroDocumento" />
+                  </div>
+
+                  <div class="input-group">
+                    <label>Código</label>
+                    <input type="text" id="codigo" required />
+                  </div>
+
+                  <div class="input-group">
+                    <label>Nombre</label>
+                    <input type="text" id="nombre" required />
+                  </div>
+
+                  <div class="input-group">
+                    <label>Stock Inicial</label>
+                    <input type="number" id="stock" required min="0" />
+                  </div>
+
+                  <div class="input-group">
+                    <label>Fecha de Ingreso</label>
+                    <input type="date" id="fechaIngreso" required />
+                  </div>
+
+                  <button type="submit" class="btn-primary">
+                    Guardar Producto
+                  </button>
+                </form>
+              </div>
             </div>
 
-            <div class="input-group">
-              <label>Nombre Actual</label>
-              <input type="text" id="nombreActual" disabled />
+            <!-- EDITAR -->
+            <div class="tab-content" id="editar">
+              <div class="form-container">
+                <div class="input-group">
+                  <label>Buscar por Código</label>
+                  <input
+                    type="text"
+                    id="buscarCodigo"
+                    placeholder="Ej: 803615"
+                  />
+                </div>
+
+                <div class="input-group">
+                  <label>Código</label>
+                  <input type="text" id="codigoEditar" disabled />
+                </div>
+
+                <div class="input-group">
+                  <label>Nombre Actual</label>
+                  <input type="text" id="nombreActual" disabled />
+                </div>
+
+                <div class="input-group">
+                  <label>Nuevo Nombre</label>
+                  <input type="text" id="nuevoNombre" />
+                </div>
+
+                <button id="btnEditar" class="btn-primary">
+                  Guardar Cambios
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- COLUMNA DERECHA -->
+          <aside class="side-panel">
+            <!-- Vista previa -->
+            <div class="card-box">
+              <h3 class="card-title">Vista previa</h3>
+
+              <div class="preview">
+                <div class="preview-row">
+                  <span class="k">Código</span>
+                  <span class="v" id="pvCodigo">—</span>
+                </div>
+
+                <div class="preview-row">
+                  <span class="k">Nombre</span>
+                  <span class="v" id="pvNombre">—</span>
+                </div>
+
+                <div class="preview-row">
+                  <span class="k">Stock</span>
+                  <span class="v" id="pvStock">—</span>
+                </div>
+
+                <div class="preview-row">
+                  <span class="k">Documento</span>
+                  <span class="v" id="pvDoc">—</span>
+                </div>
+
+                <div class="preview-row">
+                  <span class="k">Fecha</span>
+                  <span class="v" id="pvFecha">—</span>
+                </div>
+              </div>
             </div>
 
-            <div class="input-group">
-              <label>Nuevo Nombre</label>
-              <input type="text" id="nuevoNombre" />
+            <!-- Resumen rápido -->
+            <div class="card-box">
+              <h3 class="card-title">Resumen rápido</h3>
+
+              <div class="mini-stats">
+                <div class="mini-stat">
+                  <span class="mini-k">Total productos</span>
+                  <span class="mini-v" id="rsTotal">—</span>
+                </div>
+
+                <div class="mini-stat">
+                  <span class="mini-k">Stock total</span>
+                  <span class="mini-v" id="rsStockTotal">—</span>
+                </div>
+
+                <div class="mini-stat">
+                  <span class="mini-k">Stock bajo</span>
+                  <span class="mini-v" id="rsBajo">—</span>
+                </div>
+              </div>
             </div>
 
-            <button id="btnEditar" class="btn-primary">Guardar Cambios</button>
-          </div>
+            <!-- Últimos ingresos -->
+            <div class="card-box">
+              <h3 class="card-title">Últimos ingresos</h3>
+
+              <div class="recent-list" id="recentList">
+                <div class="recent-empty">Aún no hay registros</div>
+              </div>
+            </div>
+          </aside>
         </div>
       </main>
     </div>
 
-    <script src="js/store.js"></script>
-    <script src="js/añadir.js"></script>
+    <script src="./js/store.js"></script>
+    <script src="./js/añadir.js"></script>
+    <script src="./js/ui.js"></script>
     <script>
       lucide.createIcons();
     </script>

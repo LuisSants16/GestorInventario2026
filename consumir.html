@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bodega Santos - Consumo</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/consumir.css" />
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <button class="menu-open" id="menuOpen">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="sidebar">
+      <button class="menu-close" id="menuClose">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h2 class="logo">Bodega Santos</h2>
+
+      <nav class="menu">
+        <a href="./index.html"
+          ><i data-lucide="layout-dashboard"></i> Dashboard</a
+        >
+        <a href="./inventario.html"><i data-lucide="boxes"></i> Inventario</a>
+        <a class="active" href="./añadir.html"
+          ><i data-lucide="plus-circle"></i> Añadir</a
+        >
+        <a href="./consumir.html"
+          ><i data-lucide="minus-circle"></i> Consumir</a
+        >
+        <a href="./configuracion.html"
+          ><i data-lucide="settings"></i> Configuración</a
+        >
+      </nav>
+
+      <div class="theme">
+        <span>Modo Claro</span>
+        <label class="switch">
+          <input type="checkbox" id="toggleTheme" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <main class="content fade-in">
+      <h1 class="page-title">Consumo de Repuestos</h1>
+
+      <div class="consume-grid">
+        <!-- FORMULARIO -->
+        <section class="panel">
+          <div class="form-container">
+            <form id="formConsumo">
+              <div class="input-group autocomplete">
+                <label>Buscar por Código</label>
+                <input
+                  type="text"
+                  id="productoInput"
+                  placeholder="Ej: 803615"
+                  autocomplete="off"
+                  required
+                />
+                <div id="listaResultados" class="resultados"></div>
+              </div>
+
+              <div class="input-group">
+                <label>Stock Actual</label>
+                <input type="text" id="stockActual" disabled />
+              </div>
+
+              <div class="input-group">
+                <label>Cantidad a Consumir</label>
+                <input type="number" id="cantidadConsumir" min="1" required />
+              </div>
+
+              <div class="input-group">
+                <label>Motivo</label>
+                <input
+                  type="text"
+                  id="motivo"
+                  placeholder="Ej: Reparación lavadora"
+                />
+              </div>
+
+              <div class="input-group">
+                <label>Fecha de Consumo</label>
+                <input type="date" id="fechaConsumo" required />
+              </div>
+
+              <button type="submit" class="btn-primary">
+                Registrar Consumo
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- PANEL DERECHO -->
+        <aside class="side-panel">
+          <div class="card-box">
+            <h3 class="card-title">Vista previa de salida</h3>
+
+            <div class="preview">
+              <div class="preview-row">
+                <span>Producto</span>
+                <span id="pvProducto">—</span>
+              </div>
+
+              <div class="preview-row">
+                <span>Stock antes</span>
+                <span id="pvStockAntes">—</span>
+              </div>
+
+              <div class="preview-row">
+                <span>Cantidad</span>
+                <span id="pvCantidad">—</span>
+              </div>
+
+              <div class="preview-row">
+                <span>Stock después</span>
+                <span id="pvStockDespues">—</span>
+              </div>
+
+              <div class="preview-row">
+                <span>Fecha</span>
+                <span id="pvFecha">—</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-box">
+            <h3 class="card-title">Últimos consumos</h3>
+            <div id="listaConsumos">
+              <div class="recent-empty">Aún no hay consumos</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <script src="js/store.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/consumir.js"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

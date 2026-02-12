@@ -79,19 +79,6 @@
   to{opacity:1; transform: translateY(0);}
 }
 
-/* modo claro */
-body.light{
-  background: #f5f7fb;
-  color: #111;
-}
-body.light .sidebar{
-  background: #ffffff;
-  color: #111;
-}
-body.light .item{
-  color: #111;
-}
-
 @media (max-width: 1024px){
     .cards{
         flex-wrap:wrap;
