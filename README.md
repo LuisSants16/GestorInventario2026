@@ -1,157 +1,124 @@
-📦 Bodega Santos – Sistema de Control de Inventario
+# 📦 Bodega Santos – Sistema de Control de Inventario
 
-Sistema web de gestión de inventario desarrollado con HTML, CSS y JavaScript puro, diseñado para controlar entradas, salidas y stock de repuestos de manera simple y profesional.
+Sistema web de gestión de inventario desarrollado con **HTML, CSS y JavaScript puro**, diseñado para controlar entradas, salidas y stock de repuestos de forma simple, visual y profesional.
 
-🚀 Características
-📊 Dashboard
+---
 
-Total de productos
+## 🚀 Características
 
-Stock bajo
+### 📊 Dashboard
+- Total de productos
+- Stock bajo
+- Movimientos del día
+- Gráfica visual de inventario
 
-Movimientos del día
+### 📦 Inventario
+- Vista general de productos
+- Indicador de stock (Normal / Bajo)
+- Interfaz moderna tipo card
 
-Gráfica visual de inventario
-
-📦 Inventario
-
-Vista general de productos
-
-Indicador de stock (Normal / Bajo)
-
-Interfaz moderna tipo card
-
-➕ Añadir Productos
-
+### ➕ Añadir Productos
 Registro de productos con:
 
-Documento de ingreso
+- Documento de ingreso
+- Número de documento
+- Código
+- Nombre
+- Stock inicial
+- Fecha de ingreso
+- Vista previa en tiempo real
+- Resumen rápido
+- Últimos ingresos
 
-Número de documento
+### ➖ Consumir Productos
+- Búsqueda inteligente por código
+- Vista previa automática de salida
+- Validación de stock
+- Registro de motivo
+- Fecha de consumo
+- Historial de últimos consumos
 
-Código
+### ⚙️ Configuración
+- Modo claro / oscuro
+- Persistencia con localStorage
 
-Nombre
+---
 
-Stock inicial
+## 🧠 Tecnologías Utilizadas
 
-Fecha de ingreso
+- HTML5
+- CSS3 (Grid + Responsive Design)
+- JavaScript Vanilla
+- LocalStorage
+- Lucide Icons
+- Font Awesome
 
-Vista previa en tiempo real
+---
 
-Resumen rápido
+## 📱 Diseño Responsive
 
-Últimos ingresos
+Optimizado para:
 
-➖ Consumir Productos
+- 🖥 Desktop  
+- 💻 Laptop  
+- 📱 Tablet  
+- 📲 Mobile  
 
-Búsqueda inteligente por código
+Sidebar adaptable y menú hamburguesa en pantallas pequeñas.
 
-Vista previa automática de salida
+---
 
-Validación de stock
+## 📂 Estructura del Proyecto
 
-Registro de motivo
+```
+Bodega-Santos/
+│
+├── css/
+│   ├── global.css
+│   ├── layout.css
+│   ├── inventario.css
+│   ├── añadir.css
+│   └── consumir.css
+│
+├── js/
+│   ├── store.js
+│   ├── ui.js
+│   ├── inventario.js
+│   ├── añadir.js
+│   └── consumir.js
+│
+├── index.html
+├── inventario.html
+├── añadir.html
+├── consumir.html
+├── configuracion.html
+└── README.md
+```
 
-Fecha de consumo
+---
 
-Historial de últimos consumos
+## 💾 Persistencia de Datos
 
-⚙️ Configuración
+El sistema utiliza **localStorage**, lo que permite:
 
-Modo Claro / Oscuro
+- Mantener datos al recargar
+- No requerir base de datos
+- Funcionar completamente offline
 
-Persistencia de datos en localStorage
+---
 
-🧠 Tecnologías utilizadas
+## 🎯 Objetivo del Proyecto
 
-HTML5
+Proyecto desarrollado como práctica avanzada de:
 
-CSS3 (Responsive + Grid)
+- Manipulación del DOM
+- Organización modular de código
+- Diseño UI profesional
+- Lógica de inventario real
+- Estructura tipo sistema empresarial
 
-JavaScript Vanilla
+---
 
-LocalStorage
+## 👨‍💻 Autor
 
-Lucide Icons
-
-Font Awesome
-
-📱 Diseño Responsive
-
-El sistema está optimizado para:
-
-🖥️ Desktop
-
-💻 Laptop
-
-📱 Tablet
-
-📲 Mobile
-
-Con sidebar adaptable y menú hamburguesa en dispositivos pequeños.
-
-🗂️ Estructura del Proyecto
-📦 Bodega-Santos
- ┣ 📂 css
- ┃ ┣ global.css
- ┃ ┣ layout.css
- ┃ ┣ inventario.css
- ┃ ┣ añadir.css
- ┃ ┗ consumir.css
- ┣ 📂 js
- ┃ ┣ store.js
- ┃ ┣ ui.js
- ┃ ┣ inventario.js
- ┃ ┣ añadir.js
- ┃ ┗ consumir.js
- ┣ index.html
- ┣ inventario.html
- ┣ añadir.html
- ┣ consumir.html
- ┣ configuracion.html
- ┗ README.md
-
-💾 Persistencia de Datos
-
-El sistema utiliza localStorage, por lo que:
-
-Los datos no se pierden al recargar
-
-No necesita base de datos
-
-Funciona completamente offline
-
-🎯 Objetivo del Proyecto
-
-Este proyecto fue desarrollado como práctica avanzada de:
-
-Manipulación del DOM
-
-Organización modular de código
-
-Diseño UI profesional
-
-Lógica de inventario real
-
-Estructuración tipo sistema empresarial
-
-📌 Futuras mejoras
-
-Exportación a Excel
-
-Reportes PDF
-
-Sistema de usuarios
-
-Base de datos real (Node.js + MongoDB)
-
-Filtros por fecha
-
-Gráficos avanzados
-
-👨‍💻 Autor
-
-Luis Santos
-Desarrollador Frontend
-Proyecto personal de práctica profesional
+**Luis Santos**  
